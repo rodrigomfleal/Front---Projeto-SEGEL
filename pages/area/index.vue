@@ -54,7 +54,8 @@
   <script>
   export default {
     name: "Register",
-  
+    layout: "menu",
+    
     data() {
       return {
         terms: false,

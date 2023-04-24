@@ -123,7 +123,7 @@
               
               this.$auth.setUser(response.data.user);
               this.$toast.success("Acesso permitido!"),
-              this.$router.push("");
+              this.$router.push("/area");
       
           })
           .catch(() => {});

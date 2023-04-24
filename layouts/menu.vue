@@ -1,48 +1,52 @@
 <template>
-    <v-navigation-drawer app>
-      <v-list dense>
-        <v-list-item>
-          <v-list-item-title>Login</v-list-item-title>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-title>Register</v-list-item-title>
-        </v-list-item>
-        <v-divider></v-divider>
-        <v-list-item>
-          <v-list-item-title>Email</v-list-item-title>
-          <v-text-field></v-text-field>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-title>Password</v-list-item-title>
-          <v-text-field type="password"></v-text-field>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-title>Remember password</v-list-item-title>
-          <v-checkbox></v-checkbox>
-        </v-list-item>
-        <v-divider></v-divider>
-        <v-list-item>
-          <v-list-item-title>About</v-list-item-title>
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <v-toolbar-title>SACCE</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn text :to="{ path: '/logout' }">Logout</v-btn>
+    </v-app-bar>
+
+    <v-navigation-drawer app permanent v-model="drawer" color="primary" dark>
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in menuItems"
+          :key="index"
+          link
+          :to="item.path"
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-  </template>
-  
-  <script>
-  export default {
-  };
-  </script>
-  
-  <style>
-  .v-navigation-drawer {
-    background-color: #911010;
-    color: white;
-  }
-  .v-list-item--active {
-    background-color: #A16F6E;
-  }
-  .v-list-item__title {
-    color: white;
-  }
-  </style>
-  
+
+    <v-content>
+      <v-container fluid>
+        <slot></slot>
+      </v-container>
+    </v-content>
+
+    <v-footer app>
+      <span>&copy; 2023 SACCE - SEGEL UFPE</span>
+    </v-footer>
+  </v-app>
+</template>
+
+<script>
+export default {
+  name: 'menuLayout',
+  data() {
+    return {
+      drawer: false,
+      menuItems: [
+        { title: 'Dashboard', icon: 'mdi-view-dashboard', path: '/dashboard' },
+        { title: 'Minha Conta', icon: 'mdi-account-box', path: '/account' },
+        { title: 'Configurações', icon: 'mdi-cog', path: '/settings' },
+        { title: 'Reservas', icon: 'mdi-calendar', path: '/reservations' },
+      ],
+    };
+  },
+};
+</script>
