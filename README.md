@@ -1,5 +1,22 @@
 # src
 
+## como criar branch feature, commitar e subir pra branch develop
+
+```bash
+git clone https://github.com/rodrigomfleal/Front---Projeto-SEGEL.git #baixar repositorio
+cd ./pasta-raiz-do-projeto
+git flow init # inicializa o git flow, talvez desnecessario
+git flow feature start seunome/nome-da-feature # ex: lucas/menu-update
+# pode começar a codar e alterar arquivos, se seguir quando quiser commitar...
+git status # verifica arquivos modificados disponiveis para commitar
+git add ./arquivo # adiciona arquivo no commit (p/ add todos, 'git add *')
+git status # confere arquivos adicionados no commit, se tiver faltando pode dar git add
+git commit -m "mensagem do commit" # cria commit com arquivos adicionados ex: git commit -m "modifying menu files"
+git flow feature finish seunome/nome-da-feature # finaliza feature mergeando commits com a branch develop no seu repositorio local
+git push origin develop # atualiza a branch develop do repositorio remoto, a partir da develop local
+# para comecar uma nova feature, basta voltar pro passo 'git flow feature start'
+```
+
 ## Build Setup
 
 ```bash
