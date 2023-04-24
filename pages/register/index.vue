@@ -9,12 +9,12 @@
             max-width="344"
             title="User Registration"
           >
-            <v-toolbar height="55" color="grey darken-1">
+            <v-toolbar height="0" color="grey darken-1">
               <v-toolbar-title>Registro</v-toolbar-title>
             </v-toolbar>
             <v-container>
               <v-text-field
-                v-model="register.first"
+                v-model="register.name"
                 color="black"
                 label="Nome"
                 light
@@ -24,10 +24,10 @@
               ></v-text-field>
 
               <v-text-field
-                v-model="register.last"
+                v-model="register.cpf"
                 color="black"
                 light
-                label="Sobrenome"
+                label="CPF"
                 variant="underlined"
                 class="v-text-field--outlined text-black"
                 outlined
@@ -47,6 +47,16 @@
               ></v-text-field>
 
               <v-text-field
+                v-model="register.phone"
+                color="black"
+                light
+                label="Telefone"
+                variant="underlined"
+                class="v-text-field--outlined text-black"
+                outlined
+              ></v-text-field>
+
+              <v-text-field
                 v-model="register.password"
                 color="black"
                 label="Senha"
@@ -60,7 +70,7 @@
                 @click:append="show = !show"
                 @keypress.enter="login"
               >
-              </v-text-field>
+              </v-text-field>            
 
               <v-checkbox
                 v-model="terms"
@@ -94,9 +104,10 @@ export default {
     return {
       terms: false,
       register: {
-        first: "",
-        last: "",
+        name: "",
+        cpf: "",
         email: "",
+        phone: "",
         password: "",
       },
       show: false,
@@ -108,18 +119,14 @@ export default {
       
       this.$axios
         .$post("/account/create", {
+          id: "",
+          name: this.register.name,
+          cpf: this.register.cpf,
           email: this.register.email,
+          phone_number: this.register.phone,
+          user_type: "1",
+          available: true,
           hashed_password: this.register.password,
-          first_name: this.register.first,
-          last_name: this.register.last,
-          first_date_product_register: Date.now(),
-          last_date_product_register: Date.now(),
-          amount_product: 0,
-          first_date_order: Date.now(),
-          last_date_order: Date.now(),
-          amount_order: 0,
-          amount_register_order: 0,
-          amount_register_product: 0,
         })
         .then((response) => {
           console.table(response),
