@@ -112,8 +112,7 @@ export default {
         .then((response) => {
             
             this.$auth.setUser(response.data.user);
-            this.$toast.success("Acesso permitido!"),
-            this.$router.push("dashboard");
+            this.$router.push("/dashboard");
     
         })
         .catch(() => {});

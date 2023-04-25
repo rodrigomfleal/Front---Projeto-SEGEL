@@ -1,5 +1,9 @@
 <template>
   <div>
+    <v-app-bar app color="primary" dark>
+      <v-toolbar-title>SACCE</v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-app-bar>
     <div class="img">
       <v-row justify="center" align="center">
         <img src="" />
@@ -9,9 +13,8 @@
     <v-navigation-drawer
       absolute
       v-model="drawer"
-      :mini-variant.sync="mini"
       permanent
-      light
+      color="primary"
     >
       <v-list-item class="px-2">
         <v-list-item-avatar>
@@ -19,10 +22,6 @@
         </v-list-item-avatar>
 
         <v-list-item-title>John Leider</v-list-item-title>
-
-        <v-btn icon @click.stop="mini = !mini">
-          <v-icon>mdi-chevron-left</v-icon>
-        </v-btn>
       </v-list-item>
 
       <v-divider></v-divider>
@@ -48,12 +47,11 @@ export default {
     return {
       drawer: true,
       items: [
-        { title: "Início", icon: "mdi-home-city" },
-        { title: "Minha Conta", icon: "mdi-account" },
-        { title: "Produtos", icon: "mdi-package" },
-        { title: "Vendas", icon: "mdi-tag" },
-        { title: "Usuários", icon: "mdi-account-group-outline" },
-        {title: "Sair", icon: "mdi-logout", route: "/login"}
+        { title: "Início", icon: "mdi-home-city", route: "/dashboard" },
+        { title: "Minha Conta", icon: "mdi-account", routa: "/account" },
+        { title: "Reservas", icon: "mdi-package", route: "/reservation" },
+        { title: "Clientes", icon: "mdi-account-group" },
+        { title: "Sair", icon: "mdi-logout", route: "/login" }
       ],
       mini: true,
     };

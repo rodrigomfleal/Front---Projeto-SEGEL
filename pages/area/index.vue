@@ -53,7 +53,7 @@
   
   <script>
   export default {
-    name: "Register",
+    name: "Register Area",
   
     data() {
       return {
