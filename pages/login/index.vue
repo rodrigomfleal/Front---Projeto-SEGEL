@@ -1,11 +1,8 @@
 <template>
-  <div class="body">
-    <v-app style="background-color: white; color: white">
-      <v-layout justify-center>
-        <v-flex xs12 sm8 md4>
-          <v-card class="d-flex flex-column text-center" color="grey lighten-5">
-            <v-toolbar color="grey darken-1">
-              <v-toolbar-title>Área de Acesso</v-toolbar-title>
+  <div class="body" style="display:flex;justify-content:center;align-items:center;">
+
+    <v-card class="text-center" color="grey lighten-5" style="width:25%">
+            <v-toolbar class = "logo" color="#921414">
             </v-toolbar>
             <v-card-text>
               <form ref="form">
@@ -25,7 +22,7 @@
                   <template v-slot:prepend-inner>
                     <v-tooltip bottom>
                       <template v-slot:activator="{ on }">
-                        <v-icon color="black" v-on="on"
+                        <v-icon color="#921414" v-on="on"
                           >mdi-account-outline</v-icon
                         >
                       </template>
@@ -53,7 +50,7 @@
                   <template v-slot:prepend-inner>
                     <v-tooltip bottom>
                       <template v-slot:activator="{ on }">
-                        <v-icon color="black" v-on="on"
+                        <v-icon color="#921414" v-on="on"
                           >mdi-lock-outline</v-icon
                         >
                       </template>
@@ -61,19 +58,15 @@
                     </v-tooltip>
                   </template>
                 </v-text-field>
-                <div class="text-center justify-center">
-                  <v-btn
-                    color="grey darken-1"
-                    @click="signIn()"
-                    >Acessar</v-btn
-                  >
-                  <div class="text-center justify-center">
-                    <v-btn to="/register" class="mt-4" color="grey darken-1"
-                      >Registrar</v-btn
-                    >
-                  </div>
+                <div>
+                <div style="float:right">
+                  <v-btn color="#921414" @click="signIn()">Acessar</v-btn>
                 </div>
-
+                <div style="float:left">
+                  <v-btn to="/register" color="#A2706E">Registrar</v-btn>
+                </div>
+                </div>
+                <br><br>
                 <div
                   class="text-center justify-center"
                   style="margin-top: 10px"
@@ -87,10 +80,7 @@
                 </div>
               </form>
             </v-card-text>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-app>
+    </v-card>
   </div>
 </template>
 
@@ -135,5 +125,15 @@ export default {
 <style scoped>
 .body {
   padding: 80px;
+  background-image: url("principal.jpg");
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
+.logo {
+  padding: 60px;
+  background-image: url("logo.png");
+  background-position: center;
+  background-repeat: no-repeat; 
 }
 </style>

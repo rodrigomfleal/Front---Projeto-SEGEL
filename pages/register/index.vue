@@ -1,99 +1,84 @@
 <template>
-  <div>
-    <v-app style="background-color: white; color: white">
-      <v-layout justify-center>
-        <v-flex xs12 sm8 md4>
-          <v-card
-            class="d-flex flex-column justify-center text-center"
-            color="grey lighten-5"
-            max-width="344"
-            title="User Registration"
-          >
-            <v-toolbar height="0" color="grey darken-1">
-              <v-toolbar-title>Registro</v-toolbar-title>
+  <div class="body" style="display:flex;justify-content:center;align-items:center;">
+
+    <v-card class="text-center" color="grey lighten-5" style="width:25%">
+        <v-toolbar class = "logo" color="#921414">
             </v-toolbar>
-            <v-container>
-              <v-text-field
-                v-model="register.name"
-                color="black"
-                label="Nome"
-                light
-                variant="underlined"
-                class="v-text-field--outlined text-black"
-                outlined
-              ></v-text-field>
+            <v-card-text>
+	            <form ref="form">
+	              <v-text-field
+	                v-model="register.name"
+	                color="black"
+	                label="Nome"
+	                light
+	                variant="underlined"
+	                class="v-text-field--outlined text-black"
+	                outlined
+	              ></v-text-field>
 
-              <v-text-field
-                v-model="register.cpf"
-                color="black"
-                light
-                label="CPF"
-                variant="underlined"
-                class="v-text-field--outlined text-black"
-                outlined
-              ></v-text-field>
+	              <v-text-field
+	                v-model="register.cpf"
+	                color="black"
+	                light
+	                label="CPF"
+	                variant="underlined"
+	                class="v-text-field--outlined text-black"
+	                outlined
+	              ></v-text-field>
 
-              <v-text-field
-                v-model="register.email"
-                color="black"
-                light
-                label="Email"
-                variant="underlined"
-                outlined
-                :rules="[
-                  (v) => !!v || 'E-mail obrigatório',
-                  (v) => /.+@.+\..+/.test(v) || 'E-mail inválido',
-                ]"
-              ></v-text-field>
+	              <v-text-field
+	                v-model="register.phone"
+	                color="black"
+	                light
+	                label="Telefone"
+	                variant="underlined"
+	                class="v-text-field--outlined text-black"
+	                outlined
+	              ></v-text-field>
 
-              <v-text-field
-                v-model="register.phone"
-                color="black"
-                light
-                label="Telefone"
-                variant="underlined"
-                class="v-text-field--outlined text-black"
-                outlined
-              ></v-text-field>
+	              <v-text-field
+	                v-model="register.email"
+	                color="black"
+	                light
+	                label="Email"
+	                variant="underlined"
+	                outlined
+	                :rules="[
+	                  (v) => !!v || 'E-mail obrigatório',
+	                  (v) => /.+@.+\..+/.test(v) || 'E-mail inválido',
+	                ]"
+	              ></v-text-field>
 
-              <v-text-field
-                v-model="register.password"
-                color="black"
-                label="Senha"
-                light
-                placeholder="Enter your password"
-                variant="underlined"
-                :rules="[(v) => !!v || 'Senha obrigatória']"
-                :append-icon="show ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"
-                outlined
-                :type="show ? 'text' : 'password'"
-                @click:append="show = !show"
-                @keypress.enter="login"
-              >
-              </v-text-field>            
 
-              <v-checkbox
-                v-model="terms"
-                light
-                color="black"
-                label="Aceito os termos e condições"
-              ></v-checkbox>
-            </v-container>
-
-            <v-divider></v-divider>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="grey darken-1" @click="create()">
-                Registrar
-                <v-icon icon="mdi-chevron-right" end></v-icon>
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-app>
+	              <v-text-field
+	                v-model="register.password"
+	                color="black"
+	                label="Senha"
+	                light
+	                placeholder="Enter your password"
+	                variant="underlined"
+	                :rules="[(v) => !!v || 'Senha obrigatória']"
+	                :append-icon="show ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"
+	                outlined
+	                :type="show ? 'text' : 'password'"
+	                @click:append="show = !show"
+	                @keypress.enter="login"
+	              >
+	              </v-text-field>  
+                <div>
+                <div style="float:left">
+                  <v-btn to="/login" color="#A2706E">Voltar</v-btn>
+                </div>
+                <div style="float:right">
+                  <v-btn @click="create()" color="#921414">Registrar</v-btn>
+                </div>
+                </div>
+                <br><br>
+              </form>
+            </v-card-text>
+    </v-card>
   </div>
+
 </template>
 
 <script>
@@ -140,4 +125,17 @@ export default {
 </script>
 
 <style scoped>
+.body {
+  padding: 80px;
+  background-image: url("principal.jpg");
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
+.logo {
+  padding: 60px;
+  background-image: url("logo.png");
+  background-position: center;
+  background-repeat: no-repeat; 
+}
 </style>
